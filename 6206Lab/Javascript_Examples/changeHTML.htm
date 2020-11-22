@@ -1,0 +1,44 @@
+<html>
+<head>
+<script type="text/javascript">
+function insRow()
+{
+var x=document.getElementById('myTable').insertRow(2);
+var y=x.insertCell(0);
+var z=x.insertCell(1);
+y.innerHTML="NEW CELL1";
+y.style.background="yellow";
+z.innerHTML="NEW CELL2";
+z.style.background="yellow";
+}
+function changeWidth()
+{
+var x=document.getElementById('myTable').rows;
+ for (i=0; i<x.length; i++) {
+     x[i].height="50";
+   }
+}
+
+</script>
+</head>
+
+<body>
+<table id="myTable" border="1">
+<tr>
+<td>Row1 cell1</td>
+<td>Row1 cell2</td>
+</tr>
+<tr>
+<td>Row2 cell1</td>
+<td>Row2 cell2</td>
+</tr>
+</table>
+<form>
+<input type="button" onclick="insRow()" value="Insert row">
+<input type="button" onclick="changeWidth()" value="Bigger cell">
+
+</form>
+</body>
+
+</html>
+

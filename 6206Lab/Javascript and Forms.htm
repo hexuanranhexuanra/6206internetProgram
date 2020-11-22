@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<HTML>
+	<HEAD>
+		<TITLE>Javascript and Forms</TITLE>
+
+		<SCRIPT LANGUAGE = "Javascript">
+
+ 
+		</SCRIPT>
+	</HEAD>
+	
+	<BODY>
+
+		<FORM NAME="frmOne" ACTION="" METHOD="POST">
+                <P>
+			Your Name: <INPUT TYPE="text" VALUE="" id="tbName"> 
+			<SPAN STYLE=color:red ID="name_error"></SPAN>
+		</P>
+		<P>
+			EMAIL: <INPUT TYPE="text" NAME="email" VALUE="" PLACEHOLDER="Email Address"> 
+			<SPAN STYLE=color:red ID="email_error"></SPAN>
+		</P>
+
+		<P>
+			Payment Options:
+			<INPUT TYPE="Radio" Name="payment" Value="CC">Credit Card
+			<INPUT TYPE="Radio" Name="payment" Value="DC">Debit Card
+			<INPUT TYPE="Radio" Name="payment" Value="PP">PayPal 
+			<SPAN STYLE=color:red ID="radio_error"></SPAN>
+		</P>
+
+		<P>
+		Where did you hear about us?
+		<SELECT NAME="hear">
+			<OPTION Value="None">None</OPTION>
+			<OPTION Value="paper">Newspaper</OPTION>
+			<OPTION Value="tv">Television</OPTION>
+			<OPTION Value="mouth">Word of Mouth</OPTION>
+			<OPTION Value="seach">Search Engine</OPTION>
+		</SELECT>
+		 <SPAN STYLE=color:red ID="dropdown_error"></SPAN>
+		</P>
+
+		<P>
+			<LABEL FOR="CB1">Terms and Conditions</LABEL>
+			<INPUT TYPE="Checkbox" Name="terms" ID="CB1" Value="TAC">
+			<SPAN STYLE=color:red ID="checkbox_error"></SPAN>
+		</P>
+
+		<P>&nbsp;</P>
+		<INPUT TYPE="button" VALUE="SUBMIT" onClick="validate()">
+		</FORM>
+
+	</BODY>
+</HTML>

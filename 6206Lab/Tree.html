@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <style type="text/css">
+        #menu {
+            border: 1px solid black;
+        }
+
+        #menu li {
+            list-style: none;
+            cursor: pointer;
+        }
+
+        #menu li:hover {
+            list-style: none;
+            cursor: pointer;
+            color: red
+        }
+
+        #menu li ul {
+            display: none;
+        }
+    </style>
+
+
+</head>
+<body>
+<div id="menu"></div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+    var treeJson = [
+        {
+            name: '李磊',
+            ssdw: '一部',
+            children: [
+                {name: '李磊2', ssdw: '一部中心1'},
+                {name: '李磊3', ssdw: '一部中心2'},
+                {
+                    name: '李磊4', ssdw: '一部中心3',
+                    children: [
+                        {
+                            name: '王磊2',
+                            ssdw: '一部中心1',
+                            children: [
+                                {name: '张磊2', ssdw: '一部中心4'},
+                                {name: '张磊3', ssdw: '一部中心4'},
+                            ]
+                        },
+                        {name: '王磊3', ssdw: '一部中心2'},
+                        {name: '王磊4', ssdw: '一部中心3'}
+                    ]
+                },
+
+            ]
+        }
+    ]
+
+    function buildMenu(obj) {
+        var str = "";
+        $.each(obj, function (index, item) {
+            if (typeof (obj[index].children) == "object") {
+                str += "<li>" + obj[index].name + "</li>";
+                str += "<li>" + obj[index].ssdw + "</li>";
+                str += "<ul>";
+                str += buildMenu(obj[index].children); //递归判断是不是object,直到不是li
+                str += "</ul>";
+            } else {
+                //  alert(index + "--" + obj[index]);  //item == obj[index]
+
+                str += "<li>" + obj[index].name + "</li>"
+                str += "<li>" + obj[index].ssdw + "</li>"
+
+            }
+        });
+
+        return str;
+    }
+    // console.log(buildMenu(treeJson));
+    $("#menu").html(buildMenu(treeJson))
+</script>
+</html>

@@ -1,0 +1,24 @@
+<html>
+<head>
+<script type="text/javascript">
+var blank="                                                      ";
+var word="Happy BirthDay!!!";
+var msg=blank+word+blank+word;
+var i=0;
+function greet() {
+   window.status=msg.substring(i,msg.length)+msg.substring(0,i);
+   //alert(window.status);
+   i++;
+   if (i>msg.length) {
+    i=0;
+   }
+   window.setTimeout("greet()",100);
+}
+</script>
+</head>
+<body>
+<script type="text/javascript">
+  greet();
+</script>
+</body>
+</html>

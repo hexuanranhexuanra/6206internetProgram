@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Verify number is Entered</title>
+<script type="text/javascript">
+function checkForNumber(fieldValue) {
+  var numberCheck = isNaN(fieldValue);
+  if (numberCheck == true) {
+	window.alert(" must be a numeric value!");
+	return false;
+  }
+}
+</script>
+</head>
+<body>
+<form>
+Age: <input type="text" name="age" size=3 maxlength=3 onchange="return checkForNumber(this.value);" /><br/>
+<input type="submit" value="submit" />
+</form>
+</body>
+</html>

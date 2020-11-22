@@ -1,0 +1,48 @@
+<html>
+<head>
+<style type="text/css">
+#mvTxt {
+	text-align:right;
+	font-family:comic sans ms;
+	color:red;
+	font-size:2em;
+}
+</style>
+<script type="text/javascript">
+
+var blank="                                                      ";
+var word="Happy BirthDay!!!";
+var msg=blank+word+blank+word;
+var i=0;
+function greet() {
+   window.status=msg.substring(i,msg.length)+msg.substring(0,i);
+   i++;
+   if (i>msg.length) {
+    i=0;
+   }
+   window.setTimeout("greet()",500);
+}
+
+var pos=700;
+function moveText() {
+ 
+ pos=pos-5;
+ document.getElementById("mvTxt").style.left=pos+"px";
+ if (pos<=0) {
+	document.getElementById("mvTxt").style.left="700px";
+	pos=700;
+ }
+ window.setTimeout("moveText()",100);
+}
+</script>
+</head>
+<body>
+<p id="mvTxt">Happy Birthday</p>
+<script type="text/javascript">
+  document.getElementById("mvTxt").style.position="absolute";
+  document.getElementById("mvTxt").style.left="700px";
+  moveText();
+  greet();
+</script>
+</body>
+</html>

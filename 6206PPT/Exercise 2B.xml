@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>Exercise 2B</title>
+	</head>
+	<body bgcolor="#000055">
+		<h1 align="center" style="COLOR: white;">Well-formed and Valid XML</h1>
+		<p align="center" style="COLOR: white; FONT-SIZE: 14pt">
+			Instructions, make this a well-formed XML document.</p>
+		<table style="BORDER-COLLAPSE: collapse" border="1" width="80%" align="center" cellpadding="5"
+			cellspacing="5">
+			<tr>
+				<td>
+					<p style="COLOR: red; FONT-SIZE: 15pt">Well-formed XML</p>
+					<ul style="COLOR: white; FONT-STYLE: italic">
+						<li>
+							Every start-tag MUST have an end-tag.</li>
+						<li>
+							Tags CANNOT overlap.</li>
+						<li>
+							Each XML document can only has ONE root element.</li>
+						<li>
+							Element names must obey XML naming convention.</li>
+						<li>
+							XML is case-sensitive.</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

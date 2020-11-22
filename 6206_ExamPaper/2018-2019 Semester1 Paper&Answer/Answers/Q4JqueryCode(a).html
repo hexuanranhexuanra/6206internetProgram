@@ -1,0 +1,106 @@
+<html>
+    <head>
+        <title>jQuery Radiobutton</title>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/jquery-ui.js"/>
+        <script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            #menu {
+                margin-left: 20px;
+                /* border: 1px solid black; */
+            }
+    
+            /* #menu li {
+                list-style: none;
+                cursor: pointer;
+            }
+    
+            #menu li:hover {
+                list-style: none;
+                cursor: pointer;
+                color: red
+            } */
+    
+            #menu li ul {
+                display: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>Course by Year</h1>
+
+            <div id="menu"></div>
+            <div class="row">
+                <div class="col-sm-1">
+                    <button type="button" id="View">View All Modules</button>
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" id="Add">Add Items to Year 3</button>
+                </div>
+            </div>
+    </body>
+    <script>
+        var i = 1
+        var treeJson = [
+        {
+            name: 'Year 1',
+            children: [
+                {name: 'Introduction to Networking'},
+                {name: 'HTML fundamental'},
+            ]
+        },
+        {
+            name: 'Year 2',
+            children: [
+                {name: 'Database Design'},
+                {name: 'Internet Programing'},
+            ]
+        },
+        {
+            name: 'Year 3',
+            children: [
+            ]
+
+        }
+    ]
+
+    $('#View').click(function() {
+        $("#menu").html(buildMenu(treeJson))
+    });
+    $('#Add').click(function() {
+        AddItem(i)
+        i = i + 1
+    });
+    function buildMenu(obj) {
+        var str = "";
+        $.each(obj, function (index, item) {
+            if (typeof (obj[index].children) == "object") {
+                str += "<li>" + obj[index].name + "</li>";
+                // str += "<li>" + obj[index].ssdw + "</li>";
+                str += "<ul>";
+                str += buildMenu(obj[index].children); //递归判断是不是object,直到不是li
+                str += "</ul>";
+            } else {
+                //  alert(index + "--" + obj[index]);  //item == obj[index]
+
+                str += "<li>" + obj[index].name + "</li>"
+                // str += "<li>" + obj[index].ssdw + "</li>"
+
+            }
+        });
+
+        return str;
+    }
+    function AddItem(i) {
+        // treeJson[0]
+        treeJson[2].children.push(
+            {name: 'Item' + i.toString()  },
+        )
+        $("#menu").html(buildMenu(treeJson))
+    }
+
+    // $("#menu").html(buildMenu(treeJson))
+    </script>
+</html>

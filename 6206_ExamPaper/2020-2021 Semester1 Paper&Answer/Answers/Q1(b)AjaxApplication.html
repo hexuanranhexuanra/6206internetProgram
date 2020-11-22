@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Search</title>
+</head>
+<body>
+    <input type="text" size="20" id="searchString" name="searchString"> 
+    <input id="submit_btn" type="Submit" value="Search Books" onClick="loadURL();">  
+    <div id="myDiv"> 
+        <h3>Ajax Test</h3>
+        
+    </div>
+
+</body>
+<script>
+
+function loadURL() 
+{   var a = document.getElementById('searchString');
+    var url = "/SearchStaff/RetrieveLoan?searchStr=" + escape(a.value);
+    sendRequest(url); 
+}
+
+var request = null;
+var data =  null;
+var READY_STATE_COMPLETE = 4;
+
+// Send user interactions on page to server
+function sendRequest(url) {
+    request = createRequest()
+    if (request==null){
+        return;
+    }
+    // Set event handler and send user’s data
+    request.open("GET",url,true)
+    request.send(null) // 使用XMLHttpRequest对象发送请求,get请求不需要发送data
+    request.onreadystatechange = processRequestChange;
+}
+
+// Create XMLHttpRequest object
+function createRequest() {
+    var req = null;
+    if(XMLHttpRequest){
+        req = new XMLHttpRequest()
+    }
+    else if(ActiveXObject) {
+        req = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    else{
+        req = null;
+    }
+    return req;
+}
+
+// Create event handler to receive responses from server
+function processRequestChange(){
+    // Get status of request
+    if(request == null)
+        { 
+            return; 
+        } 
+    if (request.readyState == READY_STATE_COMPLETE) 
+
+        if(request.status < 200 || request.status >= 300){
+            alert('Search Failed，Status= ' + request.status);
+            return;
+        }
+        else if(request.status == 200){
+            // 得到服务端返回的数据
+            //  request.responseText = [""]
+            if(req.responseXML.getElementsByTagName("Staffs")[0].childNodes.length === 0){
+                document.getElementById("myDiv").innerHTML = 'No data'
+            }
+            else {
+                document.getElementById("myDiv").innerHTML =  processXML(req.responseXML);
+                data = request.responseText; 
+                myform.results.value = data;  // js操作DOM 将数据写到页面对象中,实现局部刷新
+            }
+        }
+        else{
+            clearTable()
+        }
+}
+function processXML(responseXML) {          
+    var Staffs = responseXML.getElementsByTagName("Staffs")[0];   
+    var numStaffs = staffs.childNodes.length;   
+    var myTable = '';    
+    if (numStaffs > 0) {        
+        myTable += '<Table border="1">';  
+        myTable += '<thead style="background-color:lightblue">';    
+        myTable += '<tr><th>Name</th><th>Loan Item</th></tr></thead>';      
+        myTable += '<tbody>';  
+        for (loop=0; loop< Staffs.childNodes.length; loop++){   
+            var aStaff = Staffs.childNodes[loop];   
+            var staffName = aStaff.getElementsByTagName("Name")[0];   
+            var LoanItems = aStaff.getElementsByTagName("LoanItems")[0];
+            myTable += '<tr><td>';       
+            myTable += staffName.childNodes[0].nodeValue + '</td>';
+            for (i=0; loop< LoanItems.childNodes.length; i++){ 
+                var Item = LoanItems[i]
+                var itemName = LoanItems
+                myTable += '<td><b>' + Item.childNodes[0] + '</b>'; 
+                var itemDetail = Item.childNodes[1]
+                for (j=0; loop< itemDetail.childNodes.length; j++){
+                    myTable += '<p>' + itemDetail[j].childNodes[0].nodeValue + '</p>'
+                    myTable += '<p>' + itemDetail[j].childNodes[1].nodeValue + '</p>'
+                    myTable += '<p>' + itemDetail[j].childNodes[2].nodeValue + '</p>'
+                }
+                myTable +='</td></tr>';    
+            } 
+        }    
+        myTable += '</tbody>';   
+        myTable += '</Table>';       //alert(myTable);      
+        return myTable;   
+    }   
+}
+
+</script>
+</html>
+
+
+// XML data
+<Books>  
+    <Book>      
+        <Title> Duke: A Biography of the Java Evangelist</Title>      
+        <Year>2001</Year> 
+    </Book>  
+    <Book>      
+        <Title> From Oak to Java: The Revolution of a Language</Title>      
+        <Year>1998</Year> 
+    </Book>  
+</Books>
+
+//  data
+<Staffs>
+    <Staff>
+        <Name>Jayson Wong</Name>
+        <LoanItems>
+            <LoanItem>
+                <Itemname>Lenove Thinkpad L15</Itemname>
+                <LonaDetail>
+                    <Qty>1</Qty>
+                    <LoanStart>12 Jan 2020</LoanStart>
+                    <LoanEnd>12 Jan 2021</LoanEnd>
+                </LonaDetail>
+            </LoanItem>
+            <LoanItem>
+                <Itemname>Lenove Monitor 27 inch</Itemname>
+                <LonaDetail>
+                    <Qty>1</Qty>
+                    <LoanStart>12 Jan 2020</LoanStart>
+                    <LoanEnd>12 Jan 2021</LoanEnd>
+                </LonaDetail>
+            </LoanItem>
+        </LoanItems>
+    </Staff>
+    <Staff>
+        <Name>Janie Chung</Name>
+        <LoanItems>
+            <LoanItem>
+                <Itemname>Macbook Pro 13</Itemname>
+                <LonaDetail>
+                    <Qty>1</Qty>
+                    <LoanStart>15 June 2020</LoanStart>
+                    <LoanEnd>12 June 2021</LoanEnd>
+                </LonaDetail>
+            </LoanItem>
+        </LoanItems>
+    </Staff>
+</Staffs>

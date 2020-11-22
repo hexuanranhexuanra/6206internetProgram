@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="6206Lab">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/P11_Resources.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Javascript_Examples(1).zip!/" />
+      <root url="jar://$PROJECT_DIR$/CSS_Examples(1).zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

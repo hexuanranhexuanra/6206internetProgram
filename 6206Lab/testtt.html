@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion - Default functionality</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( ".accordion" ).accordion();
+  } );
+  </script>
+</head>
+<body>
+<div class="accordion">
+  <h3>STAFF</h3>
+  <p>
+    <div class="accordion">
+      <h3>Permanent</h3>
+      <p>
+      Benefits : 14-days annual leave
+      </p>
+      <h3>Adjunct</h3>
+      <p>
+      No annual leave entitlement
+      </p>
+    </div>
+  </p>
+  <h3>PARKING</h3>
+  <p>
+    <div class="accordion">
+      <h3>Carpark J</h3>
+      <p>
+      $80 per month
+      </p>
+      <h3>Carpark H (Sheltered)</h3>
+      <p>
+      $100 per month
+      </p>
+    </div>
+  </p>
+</div>
+
+      
+</body>
+</html>

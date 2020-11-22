@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Bubble Tea with jQuery</title>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+<p><h2> Bubble Tea add-on</h2></p>
+<p><input id="item1" type="checkbox">Boba pearls ($1)</p>
+<p><input id="item2" type="checkbox">Brown Sugar ($1)</p>
+<p><input id="item3" type="checkbox">Aloe Jelly ($2)</p>
+<table>
+<tr>
+<td>Total Amount = S$</td>
+<td><div style="background: yellow;" id="TotalAmount" >0</div></td>
+</tr>
+</table>
+</body>
+<script>
+$("#item1").change(function() { 
+    var sum = 0 
+    console.log('input',$("#item1").is(':checked'))
+    if($("#item1").is(':checked')){
+        sum = sum + 1
+    }
+    if($("#item2").is(':checked')){
+        sum = sum + 1
+    }
+    if($("#item3").is(':checked')){
+        sum = sum + 2
+    }
+    $('#TotalAmount').html(sum)
+});
+$("#item2").change(function() { 
+    var sum = 0 
+    console.log('input',$("#item1").is(':checked'))
+    if($("#item1").is(':checked')){
+        sum = sum + 1
+    }
+    if($("#item2").is(':checked')){
+        sum = sum + 1
+    }
+    if($("#item3").is(':checked')){
+        sum = sum + 2
+    }
+    $('#TotalAmount').html(sum)
+});
+$("#item3").change(function() { 
+    var sum = 0 
+    console.log('input',$("#item1").is(':checked'))
+    if($("#item1").is(':checked')){
+        sum = sum + 1
+    }
+    if($("#item2").is(':checked')){
+        sum = sum + 1
+    }
+    if($("#item3").is(':checked')){
+        sum = sum + 2
+    }
+    $('#TotalAmount').html(sum)
+});
+
+// $("input[type='checkbox']").attr('value');
+// $("#item1").bind("input propertychange",function(event){
+//        console.log($("#item1").val())
+// });
+</script>
+</html>

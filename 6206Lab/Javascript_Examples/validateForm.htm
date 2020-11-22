@@ -1,0 +1,41 @@
+<html>
+<head>
+<script type="text/javascript">
+function checkNumber(field) {
+	var isNotNumber=isNaN(field.value);
+	if (isNotNumber==true) {
+		alert("You must enter a numeric value!");
+		return false;
+	}
+	return true;
+		
+}
+var noOfActivity=0;
+function checkMaxActivity(theSport){
+   	if (theSport.checked==true) {
+		if (noOfActivity==2) {
+			alert("Your choice of hobbies exceeds 2!");
+			theSport.checked=false;
+		}
+	
+		else
+			noOfActivity++;
+	}
+	else
+		noOfActivity--;
+}
+</script>
+</head>
+<body>
+<form>
+Your age:
+<input type="text" size="2" maxlength="2" onChange="return checkNumber(this);" /><br/><br/>
+Your hobbies:
+<input type="checkbox" name="activity" value="read"  onclick="checkMaxActivity(this);" />Read&nbsp;&nbsp;
+<input type="checkbox" name="activity" value="write" onclick="checkMaxActivity(this);" />Write&nbsp;&nbsp;
+<input type="checkbox" name="activity" value="fight" onclick="checkMaxActivity(this);" />Fight&nbsp;&nbsp;
+<input type="checkbox" name="activity" value="sleep" onclick="checkMaxActivity(this);" />Sleep&nbsp;&nbsp;
+<input type="checkbox" name="activity" value="chat" onclick="checkMaxActivity(this);" />Chat&nbsp;&nbsp;
+</form>
+</body>
+</html>

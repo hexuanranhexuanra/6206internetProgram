@@ -1,0 +1,25 @@
+<html>
+<head>
+<script type="text/javascript">
+
+function changeHappyFace() {
+       document.images[0].src="happyface.jpg";
+}
+function changeSadFace() {
+       document.images[0].src="sadface.jpg";
+}
+function changeColor() {
+   if (document.bgColor=="#ffff00")
+	document.bgColor="#0000ff";
+   else
+	document.bgColor="#ffff00";
+  
+}
+
+</script>
+</head>
+<body bgColor="#ffff00" >
+<img src="sadface.jpg" onmouseover="changeHappyFace();" onmouseout="changeSadFace();"/>
+<button onClick="changeColor()" >Change Background Color</button>
+</body>
+</html>
